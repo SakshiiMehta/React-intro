@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BaseHoc from "../hoc/BaseHoc";
 
 const FunctionComponent = (props) => {
   const [count, setCount] = useState(0);
@@ -19,7 +20,7 @@ const FunctionComponent = (props) => {
   );
 };
 
-export default FunctionComponent;
+export default BaseHoc(FunctionComponent);
 
 //  props: {
 //   name: "Devtown",

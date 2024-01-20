@@ -1,22 +1,37 @@
 // import logo from './logo.svg';
 import "./App.css";
-import ClassComponent from "./components/ClassComponents";
-import FunctionComponent from "./components/FunctionComponent";
+import ClassComponent from "./pages/ClassComponents";
+import FunctionComponent from "./pages/FunctionComponent";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+
+// HOC Layout
+import BaseHoc from "./hoc/BaseHoc";
+
 function App() {
   const author = "sakshi";
 
   const [name, Setname] = useState("DT");
   return (
-    <div className="App">
-      <p>Class Components</p>
-      <ClassComponent />
-      <br />
-      <p> FunctionComponent</p>
-      {/* <FunctionComponent name="Devtown" age={20} author={author} /> */}
-      <FunctionComponent name={name} age={20} author={author} />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <BaseHoc>
+            <ClassComponent />
+          </BaseHoc>
+        }
+      />
+      // Class component is used to call the path
+      <Route
+        path="/functional-component"
+        element={
+          <BaseHoc>
+            <FunctionComponent name={name} age={10} author={author} />
+          </BaseHoc>
+        }
+      />
+    </Routes>
   );
 }
 
